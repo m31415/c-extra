@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'webpack_loader',
     'rest_framework.authtoken',
     'django_nose',
+    'django_redis',
 ]
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
@@ -107,6 +108,19 @@ DATABASES = {
     }
 }
 
+# Cache time to live is 1 Hour
+CACHE_TTL = 60 * 60
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient"
+        },
+        "KEY_PREFIX": "c-extra"
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators

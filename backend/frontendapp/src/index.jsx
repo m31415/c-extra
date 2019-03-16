@@ -4,6 +4,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import Login from './components/login.jsx';
+import Root from './components/Root.jsx';
 import Reducer from './reducer/reducer';
 
 /* eslint-disable no-underscore-dangle */
@@ -18,6 +19,6 @@ const store = createStore(
 
 ReactDOM.render((
   <Provider store={store}>
-    <Login />
+    <Root />
   </Provider>
 ), document.getElementById('react-app'));
